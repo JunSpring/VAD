@@ -264,25 +264,29 @@ class PlanningMetric():
         obj_coll_sum = torch.zeros(n_future, device=segmentation.device)
         obj_box_coll_sum = torch.zeros(n_future, device=segmentation.device)
 
+        # torch>=1.13 refuses to index a CPU tensor with a CUDA mask (and vice
+        # versa); `segmentation` comes from numpy (CPU) while the trajectories are
+        # on the GPU, so do all the indexing on `segmentation`'s device.
+        dev = segmentation.device
         for i in range(B):
-            gt_box_coll = self.evaluate_single_coll(gt_trajs[i], segmentation[i], input_gt=True)
+            gt_box_coll = self.evaluate_single_coll(gt_trajs[i], segmentation[i], input_gt=True).to(dev)
 
             xx, yy = trajs[i,:,0], trajs[i, :, 1]
             # lidar系下的轨迹转换到图片坐标系下
-            xi = ((-self.bx[0]/2 - yy) / self.dx[0]).long()
-            yi = ((-self.bx[1]/2 + xx) / self.dx[1]).long()
+            xi = ((-self.bx[0]/2 - yy) / self.dx[0]).long().to(dev)
+            yi = ((-self.bx[1]/2 + xx) / self.dx[1]).long().to(dev)
 
             m1 = torch.logical_and(
                 torch.logical_and(xi >= 0, xi < self.bev_dimension[0]),
                 torch.logical_and(yi >= 0, yi < self.bev_dimension[1]),
-            ).to(gt_box_coll.device)
+            )
             m1 = torch.logical_and(m1, torch.logical_not(gt_box_coll))
 
-            ti = torch.arange(n_future)
+            ti = torch.arange(n_future, device=dev)
             obj_coll_sum[ti[m1]] += segmentation[i, ti[m1], xi[m1], yi[m1]].long()
 
             m2 = torch.logical_not(gt_box_coll)
-            box_coll = self.evaluate_single_coll(trajs[i], segmentation[i], input_gt=False).to(ti.device)
+            box_coll = self.evaluate_single_coll(trajs[i], segmentation[i], input_gt=False).to(dev)
             obj_box_coll_sum[ti[m2]] += (box_coll[ti[m2]]).long()
 
         return obj_coll_sum, obj_box_coll_sum

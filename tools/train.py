@@ -172,6 +172,12 @@ def main():
         distributed = False
     else:
         distributed = True
+        # mmcv.init_dist switches the start method to `spawn`, which pickles the
+        # whole dataset (incl. NuScenesMap objects) into every dataloader worker.
+        # Use `fork` like mmdet's setup_multi_processes (override via
+        # cfg.mp_start_method).
+        import multiprocessing as mp
+        mp.set_start_method(cfg.get('mp_start_method', 'fork'), force=True)
         init_dist(args.launcher, **cfg.dist_params)
         # re-set gpu_ids with distributed training mode
         _, world_size = get_dist_info()

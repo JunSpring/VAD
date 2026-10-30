@@ -8,6 +8,10 @@ from typing import List, Tuple, Union
 
 import mmcv
 import numpy as np
+# numpy >= 1.24 removed np.bool/np.int/... which mmdet3d v0.17.1 still uses.
+for _name, _type in (('bool', bool), ('int', int), ('float', float), ('long', int), ('object', object), ('str', str)):
+    if not hasattr(np, _name):
+        setattr(np, _name, _type)
 from pyquaternion import Quaternion
 from nuscenes.nuscenes import NuScenes
 from nuscenes.utils.data_classes import Box
@@ -971,10 +975,38 @@ parser.add_argument(
 parser.add_argument('--extra-tag', type=str, default='kitti')
 parser.add_argument(
     '--workers', type=int, default=4, help='number of threads to be used')
+parser.add_argument(
+    '--require-canbus', action='store_true',
+    help='abort if <canbus>/can_bus/ has no *_pose.json files. Without CAN data the '
+         'converter silently writes zeros into `can_bus` and a wrong-unit `v0`.')
 args = parser.parse_args()
 
+
+def _check_canbus(can_bus_root_path):
+    import glob
+    d = os.path.join(can_bus_root_path, 'can_bus')
+    n = len(glob.glob(os.path.join(d, '*_pose.json')))
+    if n == 0:
+        raise SystemExit('--require-canbus: no *_pose.json under {} (download can_bus.zip '
+                         'from nuscenes.org and unzip it there)'.format(d))
+    print('can_bus: {} pose files under {}'.format(n, d))
+
+
 if __name__ == '__main__':
-    if args.dataset == 'nuscenes' and args.version != 'v1.0-mini':
+    if args.require_canbus:
+        _check_canbus(args.canbus)
+    if args.dataset == 'nuscenes' and args.version in ('v1.0-trainval', 'v1.0-test'):
+        # Convert a single split only. The legacy `--version v1.0` branch below
+        # always runs trainval AND test, which fails when v1.0-test is not on disk.
+        nuscenes_data_prep(
+            root_path=args.root_path,
+            can_bus_root_path=args.canbus,
+            info_prefix=args.extra_tag,
+            version=args.version,
+            dataset_name='NuScenesDataset',
+            out_dir=args.out_dir,
+            max_sweeps=args.max_sweeps)
+    elif args.dataset == 'nuscenes' and args.version != 'v1.0-mini':
         train_version = f'{args.version}-trainval'
         nuscenes_data_prep(
             root_path=args.root_path,

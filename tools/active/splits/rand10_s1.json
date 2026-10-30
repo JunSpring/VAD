@@ -1,0 +1,1273 @@
+{
+  "method": "Random (uniform over train scenes, python random.Random(seed).sample)",
+  "params": {
+    "budget": 70,
+    "seed": 1,
+    "tau_c": 4,
+    "train_pkl": "/home/junspring/VAD/data/nuscenes/vad_nuscenes_infos_temporal_train.pkl"
+  },
+  "pool_counts_table": {
+    "DS": {
+      "S": 303,
+      "R": 89,
+      "L": 76,
+      "O": 23
+    },
+    "DR": {
+      "S": 77,
+      "R": 25,
+      "L": 20,
+      "O": 3
+    },
+    "NS": {
+      "S": 38,
+      "R": 14,
+      "L": 13,
+      "O": 6
+    },
+    "NR": {
+      "S": 5,
+      "R": 4,
+      "L": 3,
+      "O": 1
+    }
+  },
+  "selected_table": {
+    "DS": {
+      "S": 30,
+      "R": 13,
+      "L": 5,
+      "O": 2
+    },
+    "DR": {
+      "S": 6,
+      "R": 3,
+      "L": 3,
+      "O": 0
+    },
+    "NS": {
+      "S": 7,
+      "R": 0,
+      "L": 0,
+      "O": 0
+    },
+    "NR": {
+      "S": 1,
+      "R": 0,
+      "L": 0,
+      "O": 0
+    }
+  },
+  "selected_marginals": {
+    "weather": {
+      "DS": 50,
+      "DR": 12,
+      "NS": 7,
+      "NR": 1
+    },
+    "command": {
+      "S": 44,
+      "R": 16,
+      "L": 8,
+      "O": 2
+    }
+  },
+  "num_scenes": 70,
+  "num_frames": 2816,
+  "scene_names": [
+    "scene-0004",
+    "scene-0011",
+    "scene-0031",
+    "scene-0041",
+    "scene-0044",
+    "scene-0046",
+    "scene-0050",
+    "scene-0122",
+    "scene-0167",
+    "scene-0174",
+    "scene-0176",
+    "scene-0194",
+    "scene-0199",
+    "scene-0218",
+    "scene-0291",
+    "scene-0295",
+    "scene-0347",
+    "scene-0354",
+    "scene-0357",
+    "scene-0360",
+    "scene-0367",
+    "scene-0369",
+    "scene-0371",
+    "scene-0381",
+    "scene-0395",
+    "scene-0407",
+    "scene-0426",
+    "scene-0432",
+    "scene-0439",
+    "scene-0446",
+    "scene-0462",
+    "scene-0480",
+    "scene-0512",
+    "scene-0576",
+    "scene-0578",
+    "scene-0589",
+    "scene-0592",
+    "scene-0641",
+    "scene-0652",
+    "scene-0654",
+    "scene-0660",
+    "scene-0671",
+    "scene-0676",
+    "scene-0686",
+    "scene-0695",
+    "scene-0707",
+    "scene-0726",
+    "scene-0736",
+    "scene-0747",
+    "scene-0760",
+    "scene-0764",
+    "scene-0765",
+    "scene-0787",
+    "scene-0790",
+    "scene-0848",
+    "scene-0864",
+    "scene-0878",
+    "scene-0883",
+    "scene-0896",
+    "scene-0961",
+    "scene-0976",
+    "scene-0978",
+    "scene-0999",
+    "scene-1021",
+    "scene-1052",
+    "scene-1075",
+    "scene-1077",
+    "scene-1090",
+    "scene-1096",
+    "scene-1104"
+  ],
+  "scene_tokens": [
+    "25496f19ffd14bd088cb430bfc01a4d7",
+    "c075fbdd97124beaba95bc5c25149f30",
+    "f444b757d7e2444c889da10f02b73491",
+    "359f9c029ae44e1d9d47c05bc7915561",
+    "8758419c03ab47a59ea6d6620176f3a3",
+    "798e8504b4364d378270333a349ef508",
+    "9a81caa3d5134d7f87ee4786ccef68f7",
+    "e6cb595f6df44b3999db28c65f2244ac",
+    "448cf480b0b8400a86881d28c2c5f734",
+    "fd5a3c6d3ad44954a8045edbe9d93763",
+    "c7492bdc08f8450fa580b7787331f0c9",
+    "04061484361145f5ac6f90a5103b84a6",
+    "c324de94562d41498a2d4b7d51c5ce78",
+    "febc1800b9ed432d96aee5ecf0156831",
+    "59ff984c3143486da7d2c4ffec023b36",
+    "63252988084b4943a50734990c47e039",
+    "af128e79b77a4a4b8bfcd997c320b2a9",
+    "312102fd97de4bd4859374946e24ccdc",
+    "f0294478e1994642bac453f1e84610df",
+    "cf10376382b74af1975be86f7190df20",
+    "4ea72ee843914a6cbd755e39f2489156",
+    "a1b51c02d8414856a86c0c37e4789c2f",
+    "17302a41218442ffbb0b094adb0669ab",
+    "eba4b7c19b5f48289e105937d03e5222",
+    "dbfd4af0e0d744858e796ec69826e673",
+    "c34206e65a1442828b950b0ca52098b7",
+    "034256c9639044f98da7562ef3de3646",
+    "d4c560022dda448dabb0b60fb62dd6ba",
+    "261e8288cf5647e396ab584e210e4ba1",
+    "ae643c14ded14e6ea74f8c8605200ed1",
+    "36e3167610cc48eabcaad06a72479ac7",
+    "5c76a3728b8b4d02ae20bd69fb928aa1",
+    "befb96098dc14988ac468a6bd3cbd4a0",
+    "6946bd49ebe648b7a8c4555774059bc8",
+    "f0f120e4d4b0441da90ec53b16ee169d",
+    "cddd0d5be10b4313a859524952455f43",
+    "9c5dc664216e43a99d5da3f23d373e4d",
+    "e02aee6f1fec4d13ad77044466da5fb4",
+    "c468cdcc838143d480b5b9c835c8380c",
+    "9056ac9944e846109b00e31cc96259cb",
+    "77c9f156f8594ed59dcdacb8b877a7ac",
+    "d1ece215e0a8442691cb5e380a6fb935",
+    "b8be4950e73743a8841d545fcb145706",
+    "a6ebe93557f24cf9bcf613dbff0aab24",
+    "1466f33b56704942a368fa03d10708dd",
+    "1b3b150c9d3e4e1593e7ce882a69f870",
+    "ef5f945852e84fcc88cab506746a6636",
+    "2f9da038274a4448bdbb83f994fc6381",
+    "373bf99c103d4464a7b963a83523fbcb",
+    "ea4c42715ae24b0b952c57a9af1e7731",
+    "dc8302cfccdb4812a0a4a60dde595e18",
+    "ab5bc0504e2c4103ab306c5bd18f6791",
+    "19284973bd0342998c37848e931a90d0",
+    "78f63999591a49a195b872ddc368a146",
+    "bf753f22bc524274bc359467e0be149c",
+    "5d5506d750cc41d8bd33840d5350d7ad",
+    "6447a9c30b0140d783871b08104ae7b3",
+    "ee909cb746e44174be804f26bc971efe",
+    "fd4ef697de684d0a8e016a8f8ae61193",
+    "5a2aac9df32945d183fc81924ff148b6",
+    "7f03cd19d9cc4381a591fca00666d7ed",
+    "8b93e49bac094cf0a1c3ea983912f89f",
+    "f30849d00388491fa6997a13d56c73fd",
+    "fee7ac5f5c1e4943877cd20d6e069427",
+    "390f81ac97474695a727d688240e6fba",
+    "277af8c7487f4f24bd2953d4dc8d11ff",
+    "d25718445d89453381c659b9c8734939",
+    "6d8cb5391245464c9de1c412819df210",
+    "9771da5dd7bb4657be34365619e39dab",
+    "e3b6fe9201c64334be311d4249a0c80e"
+  ],
+  "scenes": [
+    {
+      "name": "scene-0004",
+      "token": "25496f19ffd14bd088cb430bfc01a4d7",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 7.4896,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Random scene, arrive at intersection, cross intersection, jaywalkers"
+    },
+    {
+      "name": "scene-0011",
+      "token": "c075fbdd97124beaba95bc5c25149f30",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 4.322,
+      "cmd_counts": {
+        "S": 36,
+        "R": 0,
+        "L": 4
+      },
+      "n_frames": 40,
+      "description": "Turn left, pass trucks on both sides, construction workers, sleeping construction workers, garbage, parked cars"
+    },
+    {
+      "name": "scene-0031",
+      "token": "f444b757d7e2444c889da10f02b73491",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 7.6731,
+      "cmd_counts": {
+        "S": 25,
+        "R": 15,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Construction, workers sitting on grass, garbage"
+    },
+    {
+      "name": "scene-0041",
+      "token": "359f9c029ae44e1d9d47c05bc7915561",
+      "cell": "DS-L",
+      "weather": "DS",
+      "command": "L",
+      "mean_speed": 5.7092,
+      "cmd_counts": {
+        "S": 28,
+        "R": 0,
+        "L": 12
+      },
+      "n_frames": 40,
+      "description": "Turn left, arrive at busy intersection, red light"
+    },
+    {
+      "name": "scene-0044",
+      "token": "8758419c03ab47a59ea6d6620176f3a3",
+      "cell": "DS-L",
+      "weather": "DS",
+      "command": "L",
+      "mean_speed": 10.0913,
+      "cmd_counts": {
+        "S": 27,
+        "R": 0,
+        "L": 13
+      },
+      "n_frames": 40,
+      "description": "Truck turns, parked cars, bump, bikes"
+    },
+    {
+      "name": "scene-0046",
+      "token": "798e8504b4364d378270333a349ef508",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 2.6687,
+      "cmd_counts": {
+        "S": 39,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 39,
+      "description": "Busy intersection, ped crossing, waiting for traffic light, construction zone on the left"
+    },
+    {
+      "name": "scene-0050",
+      "token": "9a81caa3d5134d7f87ee4786ccef68f7",
+      "cell": "DS-L",
+      "weather": "DS",
+      "command": "L",
+      "mean_speed": 8.2022,
+      "cmd_counts": {
+        "S": 23,
+        "R": 1,
+        "L": 15
+      },
+      "n_frames": 39,
+      "description": "Narrow street, seveal peds, shadows, turn left, parked motorcycle"
+    },
+    {
+      "name": "scene-0122",
+      "token": "e6cb595f6df44b3999db28c65f2244ac",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 4.5012,
+      "cmd_counts": {
+        "S": 31,
+        "R": 8,
+        "L": 0
+      },
+      "n_frames": 39,
+      "description": "Fast motorcycle on street ahead, stop, parked bicycles, turn right"
+    },
+    {
+      "name": "scene-0167",
+      "token": "448cf480b0b8400a86881d28c2c5f734",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 9.0546,
+      "cmd_counts": {
+        "S": 26,
+        "R": 14,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Pass parked trucks, sitting pedestrians, turn right"
+    },
+    {
+      "name": "scene-0174",
+      "token": "fd5a3c6d3ad44954a8045edbe9d93763",
+      "cell": "DS-O",
+      "weather": "DS",
+      "command": "O",
+      "mean_speed": 6.7884,
+      "cmd_counts": {
+        "S": 26,
+        "R": 5,
+        "L": 9
+      },
+      "n_frames": 40,
+      "description": "Reflections, parked cars, trucks"
+    },
+    {
+      "name": "scene-0176",
+      "token": "c7492bdc08f8450fa580b7787331f0c9",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 3.3529,
+      "cmd_counts": {
+        "S": 39,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 39,
+      "description": "Parked cars, extra-long bendy bus, banners, arrive at intersection, turn right, truck"
+    },
+    {
+      "name": "scene-0194",
+      "token": "04061484361145f5ac6f90a5103b84a6",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 3.7144,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parked car starts to move, two bicycles lying in grass, construction zone, speed reduce, peds"
+    },
+    {
+      "name": "scene-0199",
+      "token": "c324de94562d41498a2d4b7d51c5ce78",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 8.093,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parked cars, ped"
+    },
+    {
+      "name": "scene-0218",
+      "token": "febc1800b9ed432d96aee5ecf0156831",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parking lot, walking peds, close-up peds, not moving"
+    },
+    {
+      "name": "scene-0291",
+      "token": "59ff984c3143486da7d2c4ffec023b36",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 8.2971,
+      "cmd_counts": {
+        "S": 39,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 39,
+      "description": "Big street, construction, SUV overtaking"
+    },
+    {
+      "name": "scene-0295",
+      "token": "63252988084b4943a50734990c47e039",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Wait at intersection, cars and trucks coming from both sides"
+    },
+    {
+      "name": "scene-0347",
+      "token": "af128e79b77a4a4b8bfcd997c320b2a9",
+      "cell": "DS-L",
+      "weather": "DS",
+      "command": "L",
+      "mean_speed": 6.6105,
+      "cmd_counts": {
+        "S": 30,
+        "R": 0,
+        "L": 9
+      },
+      "n_frames": 39,
+      "description": "Avoid parked cars, lane change, stop at intersection, ped"
+    },
+    {
+      "name": "scene-0354",
+      "token": "312102fd97de4bd4859374946e24ccdc",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 8.1765,
+      "cmd_counts": {
+        "S": 39,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 39,
+      "description": "Start at intersection, truck, bus, construction zone, parked bicycle"
+    },
+    {
+      "name": "scene-0357",
+      "token": "f0294478e1994642bac453f1e84610df",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Wait at intersection, digger turning, peds, construction, worker putting down cones"
+    },
+    {
+      "name": "scene-0360",
+      "token": "cf10376382b74af1975be86f7190df20",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 3.9013,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parking lot, worker cleaning, garbage, traffic cones, knocked over traffic cone"
+    },
+    {
+      "name": "scene-0367",
+      "token": "4ea72ee843914a6cbd755e39f2489156",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 6.893,
+      "cmd_counts": {
+        "S": 31,
+        "R": 8,
+        "L": 1
+      },
+      "n_frames": 40,
+      "description": "Buses, turn right"
+    },
+    {
+      "name": "scene-0369",
+      "token": "a1b51c02d8414856a86c0c37e4789c2f",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 3.9672,
+      "cmd_counts": {
+        "S": 28,
+        "R": 12,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Start at busy intersection, turn right, multiple scooters crossing"
+    },
+    {
+      "name": "scene-0371",
+      "token": "17302a41218442ffbb0b094adb0669ab",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 5.8428,
+      "cmd_counts": {
+        "S": 38,
+        "R": 0,
+        "L": 2
+      },
+      "n_frames": 40,
+      "description": "Peds, parked bus, oncoming scooter, parked bicycles, parked trucks, buses, wait at intersection"
+    },
+    {
+      "name": "scene-0381",
+      "token": "eba4b7c19b5f48289e105937d03e5222",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 7.4339,
+      "cmd_counts": {
+        "S": 33,
+        "R": 7,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Ped crossing, peds, construction, parked bicycles, turn right"
+    },
+    {
+      "name": "scene-0395",
+      "token": "dbfd4af0e0d744858e796ec69826e673",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 6.345,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Ped walking dog, peds, parking lot, truck, parked motorcycle"
+    },
+    {
+      "name": "scene-0407",
+      "token": "c34206e65a1442828b950b0ca52098b7",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 7.9836,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Residential area, taxi turn right, rubbish bins (pushable pullable objects), parked bicycles, parked cars"
+    },
+    {
+      "name": "scene-0426",
+      "token": "034256c9639044f98da7562ef3de3646",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 5.6315,
+      "cmd_counts": {
+        "S": 37,
+        "R": 0,
+        "L": 4
+      },
+      "n_frames": 41,
+      "description": "Bus, unloading van, peds, parking lot, parked bicycles"
+    },
+    {
+      "name": "scene-0432",
+      "token": "d4c560022dda448dabb0b60fb62dd6ba",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 5.101,
+      "cmd_counts": {
+        "S": 24,
+        "R": 16,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Nature, parking bay, bus stop, many peds, oncoming scooter, bump"
+    },
+    {
+      "name": "scene-0439",
+      "token": "261e8288cf5647e396ab584e210e4ba1",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 9.7372,
+      "cmd_counts": {
+        "S": 27,
+        "R": 14,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Parking lot, peds, parked bicycle"
+    },
+    {
+      "name": "scene-0446",
+      "token": "ae643c14ded14e6ea74f8c8605200ed1",
+      "cell": "DR-L",
+      "weather": "DR",
+      "command": "L",
+      "mean_speed": 6.4103,
+      "cmd_counts": {
+        "S": 21,
+        "R": 0,
+        "L": 20
+      },
+      "n_frames": 41,
+      "description": "Rain, turn left, turn left"
+    },
+    {
+      "name": "scene-0462",
+      "token": "36e3167610cc48eabcaad06a72479ac7",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 8.3429,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Rain, cross intersection, parking lot, construction vehicle"
+    },
+    {
+      "name": "scene-0480",
+      "token": "5c76a3728b8b4d02ae20bd69fb928aa1",
+      "cell": "DR-L",
+      "weather": "DR",
+      "command": "L",
+      "mean_speed": 8.6978,
+      "cmd_counts": {
+        "S": 34,
+        "R": 0,
+        "L": 6
+      },
+      "n_frames": 40,
+      "description": "Rain, parked cars, bicycle, parking lot"
+    },
+    {
+      "name": "scene-0512",
+      "token": "befb96098dc14988ac468a6bd3cbd4a0",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 6.4347,
+      "cmd_counts": {
+        "S": 23,
+        "R": 17,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Right bend, parked motorcyle, parked bicycles, parked truck, parking lot"
+    },
+    {
+      "name": "scene-0576",
+      "token": "6946bd49ebe648b7a8c4555774059bc8",
+      "cell": "DR-R",
+      "weather": "DR",
+      "command": "R",
+      "mean_speed": 3.4952,
+      "cmd_counts": {
+        "S": 26,
+        "R": 14,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Rain, construction, ped on road, turn right"
+    },
+    {
+      "name": "scene-0578",
+      "token": "f0f120e4d4b0441da90ec53b16ee169d",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 5.5328,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Rain, cross intersection"
+    },
+    {
+      "name": "scene-0589",
+      "token": "cddd0d5be10b4313a859524952455f43",
+      "cell": "DR-R",
+      "weather": "DR",
+      "command": "R",
+      "mean_speed": 7.1094,
+      "cmd_counts": {
+        "S": 24,
+        "R": 17,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Rain, turn right, cars waiting at intersection"
+    },
+    {
+      "name": "scene-0592",
+      "token": "9c5dc664216e43a99d5da3f23d373e4d",
+      "cell": "DR-L",
+      "weather": "DR",
+      "command": "L",
+      "mean_speed": 4.9962,
+      "cmd_counts": {
+        "S": 26,
+        "R": 0,
+        "L": 15
+      },
+      "n_frames": 41,
+      "description": "Rain, wait at intersection, turn left, huge truck, scooter"
+    },
+    {
+      "name": "scene-0641",
+      "token": "e02aee6f1fec4d13ad77044466da5fb4",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 5.3703,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Rain, cross intersection, parked cars, change lane, arrive at intersection"
+    },
+    {
+      "name": "scene-0652",
+      "token": "c468cdcc838143d480b5b9c835c8380c",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 0.0343,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Rain, wait at intersection, peds crossing, parked cars"
+    },
+    {
+      "name": "scene-0654",
+      "token": "9056ac9944e846109b00e31cc96259cb",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 3.6131,
+      "cmd_counts": {
+        "S": 19,
+        "R": 21,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Turn right, crane, policemen on road, parked cars"
+    },
+    {
+      "name": "scene-0660",
+      "token": "77c9f156f8594ed59dcdacb8b877a7ac",
+      "cell": "DS-O",
+      "weather": "DS",
+      "command": "O",
+      "mean_speed": 6.7155,
+      "cmd_counts": {
+        "S": 28,
+        "R": 6,
+        "L": 6
+      },
+      "n_frames": 40,
+      "description": "Painted truck, parked cars"
+    },
+    {
+      "name": "scene-0671",
+      "token": "d1ece215e0a8442691cb5e380a6fb935",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 3.8133,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Cars, heavy truck, personal mobility, arrive at intersection, peds"
+    },
+    {
+      "name": "scene-0676",
+      "token": "b8be4950e73743a8841d545fcb145706",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 1.5337,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Wheelchair, construction"
+    },
+    {
+      "name": "scene-0686",
+      "token": "a6ebe93557f24cf9bcf613dbff0aab24",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 1.0519,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Many peds, jaywalkers, wait at intersection, peds crossing crosswalk, bicycle, stroller"
+    },
+    {
+      "name": "scene-0695",
+      "token": "1466f33b56704942a368fa03d10708dd",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 7.6975,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parked cars, peds, bicycle racks, cones, through intersection"
+    },
+    {
+      "name": "scene-0707",
+      "token": "1b3b150c9d3e4e1593e7ce882a69f870",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 6.1655,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Construction, peds on sidewalk, arrive at intersection, bicyclist on sidewalk, cross intersection, bus stop, parked cars"
+    },
+    {
+      "name": "scene-0726",
+      "token": "ef5f945852e84fcc88cab506746a6636",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Wait at intersection, cars overtaking us, parked cars, peds on sidewalk, cones"
+    },
+    {
+      "name": "scene-0736",
+      "token": "2f9da038274a4448bdbb83f994fc6381",
+      "cell": "DS-L",
+      "weather": "DS",
+      "command": "L",
+      "mean_speed": 4.4494,
+      "cmd_counts": {
+        "S": 29,
+        "R": 0,
+        "L": 12
+      },
+      "n_frames": 41,
+      "description": "Parked cars, ped crossing crosswalk, parked motorcycle, peds on sidewalk, turn left, cross intersection, fence, cone"
+    },
+    {
+      "name": "scene-0747",
+      "token": "373bf99c103d4464a7b963a83523fbcb",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Wait at intersection, peds crossing crosswalk, parking lot"
+    },
+    {
+      "name": "scene-0760",
+      "token": "ea4c42715ae24b0b952c57a9af1e7731",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 1.3024,
+      "cmd_counts": {
+        "S": 29,
+        "R": 12,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Wait at intersection, ped crossing crosswalk, turn right, narrow road"
+    },
+    {
+      "name": "scene-0764",
+      "token": "dc8302cfccdb4812a0a4a60dde595e18",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 5.6238,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Bicycle, parked cars, parked trucks, follow bicycle, construction vehicle, ped, animal, containers, parking lot"
+    },
+    {
+      "name": "scene-0765",
+      "token": "ab5bc0504e2c4103ab306c5bd18f6791",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Wait at intersection, parking lot, low traffic, truck, motorcyclist"
+    },
+    {
+      "name": "scene-0787",
+      "token": "19284973bd0342998c37848e931a90d0",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 8.9719,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Parked bicycles, bus stop, peds at bus stop, wait at intersection"
+    },
+    {
+      "name": "scene-0790",
+      "token": "78f63999591a49a195b872ddc368a146",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 4.0024,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Start from intersection, peds siiting, peds on sidewalk, jaywalker"
+    },
+    {
+      "name": "scene-0848",
+      "token": "bf753f22bc524274bc359467e0be149c",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 9.6543,
+      "cmd_counts": {
+        "S": 28,
+        "R": 13,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Parked bicycle, jaywalker, bus, peds on sidewalk, cones, parked cars"
+    },
+    {
+      "name": "scene-0864",
+      "token": "5d5506d750cc41d8bd33840d5350d7ad",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 6.2234,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Car passing by, parking lot, cones, bus passing by, many peds, parked truck"
+    },
+    {
+      "name": "scene-0878",
+      "token": "6447a9c30b0140d783871b08104ae7b3",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 0.4474,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Rain, bus, parked cars, parked scooter, parked bicycle, waiting at intersection"
+    },
+    {
+      "name": "scene-0883",
+      "token": "ee909cb746e44174be804f26bc971efe",
+      "cell": "DR-S",
+      "weather": "DR",
+      "command": "S",
+      "mean_speed": 1.2568,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 1
+      },
+      "n_frames": 41,
+      "description": "Rain, peds, parking lot, truck, waiting at intersection"
+    },
+    {
+      "name": "scene-0896",
+      "token": "fd4ef697de684d0a8e016a8f8ae61193",
+      "cell": "DR-R",
+      "weather": "DR",
+      "command": "R",
+      "mean_speed": 5.326,
+      "cmd_counts": {
+        "S": 35,
+        "R": 5,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Rain, parked cars, peds, construction, fence, flooded road, construction vehicle, truck, parked motorcycles, narrow street, bus, parking lot"
+    },
+    {
+      "name": "scene-0961",
+      "token": "5a2aac9df32945d183fc81924ff148b6",
+      "cell": "DS-R",
+      "weather": "DS",
+      "command": "R",
+      "mean_speed": 3.8437,
+      "cmd_counts": {
+        "S": 25,
+        "R": 16,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Construction workers, barriers, construction vehicle, parked car, turn right, parked scooter"
+    },
+    {
+      "name": "scene-0976",
+      "token": "7f03cd19d9cc4381a591fca00666d7ed",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.0,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Wait at intersection, many peds, cars, peds crossing crosswalk"
+    },
+    {
+      "name": "scene-0978",
+      "token": "8b93e49bac094cf0a1c3ea983912f89f",
+      "cell": "DS-S",
+      "weather": "DS",
+      "command": "S",
+      "mean_speed": 0.2967,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Wait at intersection, cars, motorcycle, many peds"
+    },
+    {
+      "name": "scene-0999",
+      "token": "f30849d00388491fa6997a13d56c73fd",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 4.7725,
+      "cmd_counts": {
+        "S": 35,
+        "R": 1,
+        "L": 4
+      },
+      "n_frames": 40,
+      "description": "Night, ped, slope, distant cars, view down"
+    },
+    {
+      "name": "scene-1021",
+      "token": "fee7ac5f5c1e4943877cd20d6e069427",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 7.4132,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Night, peds in dark, arrive at intersection, bus"
+    },
+    {
+      "name": "scene-1052",
+      "token": "390f81ac97474695a727d688240e6fba",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 8.7432,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Night, bump, parked car, trash bin"
+    },
+    {
+      "name": "scene-1075",
+      "token": "277af8c7487f4f24bd2953d4dc8d11ff",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 15.1724,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Night, bus, parked cars, bus stop, peds, trash cans, high speed"
+    },
+    {
+      "name": "scene-1077",
+      "token": "d25718445d89453381c659b9c8734939",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 12.3472,
+      "cmd_counts": {
+        "S": 37,
+        "R": 0,
+        "L": 4
+      },
+      "n_frames": 41,
+      "description": "Night, big street, bus stop, high speed, construction vehicle"
+    },
+    {
+      "name": "scene-1090",
+      "token": "6d8cb5391245464c9de1c412819df210",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 5.8832,
+      "cmd_counts": {
+        "S": 40,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 40,
+      "description": "Night, trash cans, parked car, ped in dark, reflections in water"
+    },
+    {
+      "name": "scene-1096",
+      "token": "9771da5dd7bb4657be34365619e39dab",
+      "cell": "NS-S",
+      "weather": "NS",
+      "command": "S",
+      "mean_speed": 0.0249,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Night, wait at intersection, peds crossing crosswalk, scooter"
+    },
+    {
+      "name": "scene-1104",
+      "token": "e3b6fe9201c64334be311d4249a0c80e",
+      "cell": "NR-S",
+      "weather": "NR",
+      "command": "S",
+      "mean_speed": 5.6958,
+      "cmd_counts": {
+        "S": 41,
+        "R": 0,
+        "L": 0
+      },
+      "n_frames": 41,
+      "description": "Night, truck, rain, cross intersection"
+    }
+  ]
+}

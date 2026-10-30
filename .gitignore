@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VAD data / outputs (symlinks to the SSD, checkpoints, eval dumps)
+data/
+work_dirs/
+ckpt/
+ckpts/
+test/
+val/
+*.pkl
+# papers (copyrighted, keep local)
+docs/*.pdf

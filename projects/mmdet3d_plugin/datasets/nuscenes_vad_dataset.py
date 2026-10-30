@@ -933,7 +933,7 @@ class v1CustomDetectionConfig:
         self.max_boxes_per_sample = max_boxes_per_sample
         self.mean_ap_weight = mean_ap_weight
 
-        self.class_names = self.class_range_y.keys()
+        self.class_names = list(self.class_range_y.keys())  # list: dataset must be picklable for spawn workers
 
     def __eq__(self, other):
         eq = True
@@ -1780,12 +1780,17 @@ class VADCustomNuScenesDataset(NuScenesDataset):
             for key in all_metric_dict.keys():
                 all_metric_dict[key] += results[i]['metric_results'][key]
         
+        def _safe_div(a, b):
+            # a barely trained model (or a tiny val split) can have no matched
+            # predictions for a class -> report NaN instead of crashing
+            return a / b if b else float('nan')
+
         for cls in motion_cls_names:
-            result_dict['EPA_'+cls] = (all_metric_dict['hit_'+cls] - \
-                 alpha * all_metric_dict['fp_'+cls]) / all_metric_dict['gt_'+cls]
-            result_dict['ADE_'+cls] = all_metric_dict['ADE_'+cls] / all_metric_dict['cnt_ade_'+cls]
-            result_dict['FDE_'+cls] = all_metric_dict['FDE_'+cls] / all_metric_dict['cnt_fde_'+cls]
-            result_dict['MR_'+cls] = all_metric_dict['MR_'+cls] / all_metric_dict['cnt_fde_'+cls]
+            result_dict['EPA_'+cls] = _safe_div(all_metric_dict['hit_'+cls] -
+                 alpha * all_metric_dict['fp_'+cls], all_metric_dict['gt_'+cls])
+            result_dict['ADE_'+cls] = _safe_div(all_metric_dict['ADE_'+cls], all_metric_dict['cnt_ade_'+cls])
+            result_dict['FDE_'+cls] = _safe_div(all_metric_dict['FDE_'+cls], all_metric_dict['cnt_fde_'+cls])
+            result_dict['MR_'+cls] = _safe_div(all_metric_dict['MR_'+cls], all_metric_dict['cnt_fde_'+cls])
         
         print('\n')
         print('-------------- Motion Prediction --------------')
@@ -1808,9 +1813,24 @@ class VADCustomNuScenesDataset(NuScenesDataset):
                 for k in res['metric_results'].keys():
                     metric_dict[k] += res['metric_results'][k]
         
-        for k in metric_dict:
-            metric_dict[k] = metric_dict[k] / num_valid
-            print("{}:{}".format(k, metric_dict[k]))
+        planning_dict = dict()
+        if metric_dict is not None:
+            for k in metric_dict:
+                metric_dict[k] = metric_dict[k] / num_valid
+                print("{}:{}".format(k, metric_dict[k]))
+            # expose planning metrics to the caller / EvalHook (not just stdout)
+            for k, v in metric_dict.items():
+                # metric_dict also carries the per-sample motion-metric sums
+                # (gt_car, hit_car, ...); only the plan_* entries are planning metrics
+                if not k.startswith('plan_'):
+                    continue
+                planning_dict['planning/' + k] = float(v)
+            for prefix in ['plan_L2', 'plan_obj_col', 'plan_obj_box_col']:
+                keys = ['{}_{}s'.format(prefix, t) for t in (1, 2, 3)]
+                if all(k in metric_dict for k in keys):
+                    planning_dict['planning/{}_avg'.format(prefix)] = float(
+                        np.mean([metric_dict[k] for k in keys]))
+            planning_dict['planning/num_valid'] = num_valid
 
         result_files, tmp_dir = self.format_results(results, jsonfile_prefix)
 
@@ -1828,6 +1848,7 @@ class VADCustomNuScenesDataset(NuScenesDataset):
 
         if show:
             self.show(results, out_dir, pipeline=pipeline)
+        results_dict.update(planning_dict)
         return results_dict
 
 def output_to_nusc_box(detection):

@@ -271,24 +271,43 @@ def main():
                 eval_kwargs.pop(key, None)
             eval_kwargs.update(dict(metric=args.eval, **kwargs))
 
-            print(dataset.evaluate(outputs['bbox_results'], **eval_kwargs))
-    
-        # # # NOTE: record to json
-        # json_path = args.json_dir
-        # if not os.path.exists(json_path):
-        #     os.makedirs(json_path)
-        
-        # metric_all = []
-        # for res in outputs['bbox_results']:
-        #     for k in res['metric_results'].keys():
-        #         if type(res['metric_results'][k]) is np.ndarray:
-        #             res['metric_results'][k] = res['metric_results'][k].tolist()
-        #     metric_all.append(res['metric_results'])
-        
-        # print('start saving to json done')
-        # with open(json_path+'/metric_record.json', "w", encoding="utf-8") as f2:
-        #     json.dump(metric_all, f2, indent=4)
-        # print('save to json done')
+            eval_results = dataset.evaluate(outputs['bbox_results'], **eval_kwargs)
+            print(eval_results)
+            if args.json_dir:
+                os.makedirs(args.json_dir, exist_ok=True)
+                with open(osp.join(args.json_dir, 'eval_results.json'), 'w') as f:
+                    json.dump({k: _to_jsonable(v) for k, v in eval_results.items()}, f, indent=2)
+
+        # NOTE: record per-sample planning/motion metrics to json for scenario
+        # breakdowns (tools/active/eval_breakdown.py). `bbox_results` is aligned
+        # with `dataset.data_infos` (same order as _format_bbox relies on).
+        if args.json_dir:
+            os.makedirs(args.json_dir, exist_ok=True)
+            metric_all = []
+            for i, res in enumerate(outputs['bbox_results']):
+                info = dataset.data_infos[i]
+                rec = dict(
+                    index=i,
+                    sample_token=info['token'],
+                    scene_token=info['scene_token'],
+                    frame_idx=int(info['frame_idx']),
+                    gt_cmd=int(np.argmax(info['gt_ego_fut_cmd'])))
+                for k, v in res['metric_results'].items():
+                    rec[k] = _to_jsonable(v)
+                metric_all.append(rec)
+            with open(osp.join(args.json_dir, 'metric_record.json'), 'w', encoding='utf-8') as f2:
+                json.dump(metric_all, f2)
+            print('saved per-sample metrics to', osp.join(args.json_dir, 'metric_record.json'))
+
+
+def _to_jsonable(v):
+    if isinstance(v, np.ndarray):
+        return v.tolist()
+    if isinstance(v, (np.generic,)):
+        return v.item()
+    if isinstance(v, torch.Tensor):
+        return v.detach().cpu().tolist()
+    return v
 
 if __name__ == '__main__':
     main()

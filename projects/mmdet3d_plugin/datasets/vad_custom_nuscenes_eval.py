@@ -553,6 +553,10 @@ def _get_box_class_field(eval_boxes: EvalBoxes) -> str:
         class_field = 'detection_name'
     elif isinstance(box, TrackingBox):
         class_field = 'tracking_name'
+    elif box is None:
+        # no predictions at all (e.g. an untrained checkpoint): nothing to
+        # filter, the detection metrics will simply be zero
+        class_field = 'detection_name'
     else:
         raise Exception('Error: Invalid box type: %s' % box)
 

@@ -1114,6 +1114,23 @@ class VADCustomNuScenesDataset(NuScenesDataset):
 
         return example
 
+    # ---- frame-level subsets -------------------------------------------------
+    # A train pkl may contain `context_only=True` infos: keyframes kept solely so that
+    # the temporal queue (the 2 preceding keyframes, used without gradient in
+    # obtain_history_bev) is identical to full-scene training. They are never
+    # sampled as training targets and do not count towards the epoch length.
+    @property
+    def target_idx(self):
+        if getattr(self, '_target_idx', None) is None:
+            self._target_idx = [i for i, info in enumerate(self.data_infos)
+                                if not info.get('context_only', False)]
+        return self._target_idx
+
+    def __len__(self):
+        if self.test_mode:
+            return len(self.data_infos)
+        return len(self.target_idx)
+
     def prepare_train_data(self, index):
         """
         Training data preparation.
@@ -1123,6 +1140,7 @@ class VADCustomNuScenesDataset(NuScenesDataset):
             dict: Training data dict of the corresponding index.
         """
         data_queue = []
+        index = self.target_idx[index]  # identity unless the pkl has context_only frames
 
         # temporal aug
         prev_indexs_list = list(range(index-self.queue_length, index))

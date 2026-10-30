@@ -1,0 +1,9 @@
+data/
+work_dirs/
+ckpt/
+ckpts/
+test/
+val/
+.git/
+docs/*.pdf
+**/__pycache__/
